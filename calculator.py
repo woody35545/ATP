@@ -36,6 +36,8 @@ def repack(_filename_to_repack, _repack_frame_size):
         repacked_data = round(float(sum_ / _repack_frame_size), 2)
         file_res_.write(str(repacked_data) + "\n")
         sum_ = 0
+    file_to_repack_.close()
+    file_res_.close()
     return None
 
 def cal_differential(_filename):
