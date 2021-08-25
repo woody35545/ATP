@@ -24,6 +24,8 @@ def calculate_avg(_filename):
 
 def repack(_filename_to_repack, _repack_frame_size):
     sum_ = 0
+    file_res_initialize = open("repacked_" + str(_filename_to_repack), 'w')
+    file_res_initialize.close()
     file_to_repack_length = get_length_of_data(_filename_to_repack)
     max_iter = int(file_to_repack_length / _repack_frame_size)
     file_to_repack_ = open(_filename_to_repack, 'r')
@@ -36,3 +38,4 @@ def repack(_filename_to_repack, _repack_frame_size):
         sum_ = 0
 
     return None
+
