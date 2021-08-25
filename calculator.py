@@ -36,6 +36,23 @@ def repack(_filename_to_repack, _repack_frame_size):
         repacked_data = round(float(sum_ / _repack_frame_size), 2)
         file_res_.write(str(repacked_data) + "\n")
         sum_ = 0
-
     return None
 
+def cal_differential(_filename):
+    # 데이터 갯수가 무조건 짝수여야함. 홀수일 경우 마지막 하나를 지워서 짝수로 만들어줌
+    file_res_initialize = open("diff_"+_filename,'w')
+    file_res_initialize.close()
+    file_length = get_length_of_data(_filename)
+    max_iter = int(file_length/2)
+    file_ = open(_filename,'r')
+    file_res = open("diff_"+_filename,'a+')
+    for i in range(max_iter):
+        head_data = float(file_.readline())
+        tail_data = float(file_.readline())
+        diff_data = round(tail_data-head_data,2)
+        file_res.write(str(diff_data)+"\n")
+
+    file_.close()
+    file_res.close()
+
+    return None
